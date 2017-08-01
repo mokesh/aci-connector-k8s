@@ -32,6 +32,11 @@ let updateNode = async (name: string, transition: Date, client: api.Core_v1Api, 
             } as api.V1NodeCondition
         ] as Array<api.V1NodeCondition>;
         node.metadata.resourceVersion = null;
+        node.metadata.labels = {
+            "beta.kubernetes.io/arch": "amd64",
+            "beta.kubernetes.io/os": "windows",
+            "kubernetes.io/hostname": "aci-connector"
+        };
         node.status = {
             nodeInfo: {
                 kubeletVersion: "1.6.6",
